@@ -1,21 +1,8 @@
-// Refactor this file so that:
-// All functions are in a separate module called math.js 
+import add, { subtract, multiply} from './math.js';
 
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-var answer1 = add(21, 21);
+let answer1 = add(21, 21);
 console.log(answer1);
-var answer2 = subtract(44, 2);
+let answer2 = subtract(44, 2);
 console.log(answer2);
-var answer3 = multiply(21, 2);
+let answer3 = multiply(21, 2);
 console.log(answer3);
