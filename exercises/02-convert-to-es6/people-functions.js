@@ -12,9 +12,9 @@ The following code will be refactored when:
 
 import people from './people.js';
 
-function getEmails (people, options={}) {
-  const { withNames=false, onlyActive=false } = options
+const isActive = person => person.isActive;
 
+const getEmails = (people, { withNames = false, onlyActive = false } = {}) => {
   if (onlyActive) {
     people = people.filter(isActive)
   }
@@ -32,9 +32,7 @@ function getEmails (people, options={}) {
   }).join(', ')
 }
 
-function getAddresses (people, options={}) {
-  const { onlyActive=false } = options
-
+const getAddresses = (people, { onlyActive = false } = {}) => {
   if (onlyActive) {
     people = people.filter(isActive)
   }
@@ -51,17 +49,10 @@ function getAddresses (people, options={}) {
   }).join('\n\n')
 }
 
-function getYoungest (people) {
-  people.sort((personA, personB) => {
-    return personA.age - personB.age
-  })
+const getYoungest = people => {
+  const [youngest, ...others] = people.sort((personA, personB) => personA.age - personB.age)
 
-  const [youngest, ...others] = people
   return { youngest, others }
-}
-
-function isActive ({isActive} = person) {
-  return isActive
 }
 
 // these function calls should still work after the refactor!
